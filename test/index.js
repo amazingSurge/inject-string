@@ -33,37 +33,37 @@ describe('InjectString', () => {
   describe('inject()', () => {
     it('should inject a snippet into a string with one placeholder:', () => {
       const inject = new InjectString('a <!-- snippet --> b');
-      const result = inject.append('foo');
+      const result = inject.inject('foo');
 
       expect(result).to.equal('a <!-- snippet -->foo<!-- endsnippet --> b');
     });
 
     it('should inject a snippet into a string with before/after placeholders:', () => {
       const inject = new InjectString('a <!-- snippet -->\nfoo\n<!-- endsnippet --> b');
-      const result = inject.append('bar\n');
+      const result = inject.inject('bar\n');
       expect(result).to.equal('a <!-- snippet -->\nfoo\nbar\n<!-- endsnippet --> b');
     });
 
     it('should inject snippets into a string with one placeholder:', () => {
       const inject = new InjectString('a <!-- snippet --> b');
-      const result = inject.append('foo');
+      const result = inject.inject('foo');
 
       expect(result).to.equal('a <!-- snippet -->foo<!-- endsnippet --> b');
 
-      const result2 = inject.append('bar');
+      const result2 = inject.inject('bar');
       expect(result2).to.equal('a <!-- snippet -->foobar<!-- endsnippet --> b');
 
-      const result3 = inject.append('qux');
+      const result3 = inject.inject('qux');
       expect(result3).to.equal('a <!-- snippet -->foobarqux<!-- endsnippet --> b');
     });
 
     it('should inject snippets into a string with different placeholders:', () => {
       const inject = new InjectString('a <!-- a --> b <!-- b --> c');
-      const result = inject.append('foo', 'a');
+      const result = inject.inject('foo', 'a');
 
       expect(result).to.equal('a <!-- a -->foo<!-- enda --> b <!-- b --> c');
 
-      const result2 = inject.append('bar', 'b');
+      const result2 = inject.inject('bar', 'b');
       expect(result2).to.equal('a <!-- a -->foo<!-- enda --> b <!-- b -->bar<!-- endb --> c');
     });
   });

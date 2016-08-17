@@ -1,6 +1,6 @@
 {
   "name": "inject-string",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Inject a snippet of code or content into a string.",
   "homepage": "https://github.com/amazingsurge/inject-string",
   "author": {
