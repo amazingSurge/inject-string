@@ -148,7 +148,7 @@ $ npm install -d && npm test
 
 ## Contributing
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/amazingsurge/inject-string/issues/new)
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/amazingSurge/inject-string/issues/new)
 
 ## Credits
 This library is based on [inject-snippet](https://github.com/jonschlinkert/inject-snippet).
@@ -161,7 +161,7 @@ MIT © [amazingSurge](amazingSurge.com)
 [npm-url]: https://npmjs.org/package/inject-string
 [travis-image]: https://travis-ci.org/amazingSurge/inject-string.svg?branch=master
 [travis-url]: https://travis-ci.org/amazingSurge/inject-string
-[daviddm-image]: https://david-dm.org/amazingsurge/inject-string.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/amazingsurge/inject-string
-[coveralls-image]: https://coveralls.io/repos/amazingsurge/inject-string/badge.svg
-[coveralls-url]: https://coveralls.io/r/amazingsurge/inject-string
+[daviddm-image]: https://david-dm.org/amazingSurge/inject-string.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/amazingSurge/inject-string
+[coveralls-image]: https://coveralls.io/repos/amazingSurge/inject-string/badge.svg
+[coveralls-url]: https://coveralls.io/r/amazingSurge/inject-string
