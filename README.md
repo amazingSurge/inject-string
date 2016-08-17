@@ -155,12 +155,12 @@ This library is based on [inject-snippet](https://github.com/jonschlinkert/injec
 
 ## License
 
-MIT © [amazingSurge](amazingsurge.com)
+MIT © [amazingSurge](amazingSurge.com)
 
 [npm-image]: https://badge.fury.io/js/inject-string.svg
 [npm-url]: https://npmjs.org/package/inject-string
-[travis-image]: https://travis-ci.org/amazingsurge/inject-string.svg?branch=master
-[travis-url]: https://travis-ci.org/amazingsurge/inject-string
+[travis-image]: https://travis-ci.org/amazingSurge/inject-string.svg?branch=master
+[travis-url]: https://travis-ci.org/amazingSurge/inject-string
 [daviddm-image]: https://david-dm.org/amazingsurge/inject-string.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/amazingsurge/inject-string
 [coveralls-image]: https://coveralls.io/repos/amazingsurge/inject-string/badge.svg
