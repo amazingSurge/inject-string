@@ -146,8 +146,33 @@ describe('InjectString', () => {
 
     it('should add normalized newlines around snippets:', () => {
       const inject = new InjectString('a <!-- snippet --> b', {newlines: true});
-      const result = inject.append('foo');
-      expect(result).to.equal('a\n<!-- snippet -->\nfoo\n<!-- endsnippet -->\nb');
+      const result = inject.inject('foo');
+      expect(result).to.equal('a <!-- snippet -->\nfoo\n<!-- endsnippet --> b');
+
+      const result2 = inject.inject('bar');
+      expect(result2).to.equal('a <!-- snippet -->\nfoo\nbar\n<!-- endsnippet --> b');
+
+      const result3 = inject.inject('qux');
+      expect(result3).to.equal('a <!-- snippet -->\nfoo\nbar\nqux\n<!-- endsnippet --> b');
+
+      const result4 = inject.prepend('before');
+      expect(result4).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nqux\n<!-- endsnippet --> b');
+
+      const result5 = inject.append('after');
+      expect(result5).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nqux\nafter\n<!-- endsnippet --> b');
+
+      const result6 = inject.replace('hello');
+      expect(result6).to.equal('a <!-- snippet -->\nhello\n<!-- endsnippet --> b');
+    });
+
+    it('should keep spaces:', () => {
+      const inject = new InjectString('first\n\n<!-- a -->\nsecond\n<!-- enda -->\n\n<!-- b -->\nthird\n<!-- endb -->\n\nfourth');
+      const result = inject.inject('hello', 'a', {newlines: true});
+
+      expect(result).to.equal('first\n\n<!-- a -->\nsecond\nhello\n<!-- enda -->\n\n<!-- b -->\nthird\n<!-- endb -->\n\nfourth');
+
+      const result2 = inject.inject('world', 'b', {newlines: true});
+      expect(result2).to.equal('first\n\n<!-- a -->\nsecond\nhello\n<!-- enda -->\n\n<!-- b -->\nthird\nworld\n<!-- endb -->\n\nfourth');
     });
 
     it('should use custom delimiters:', () => {
