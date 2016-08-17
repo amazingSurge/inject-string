@@ -157,7 +157,6 @@ describe('InjectString', () => {
     });
   });
 
-
   describe('static methods', () => {
     it('should inject snippet into a string with placeholder:', () => {
       const result = InjectString.inject('a <!-- snippet --> b', 'foo');
@@ -171,7 +170,7 @@ describe('InjectString', () => {
 
     it('should strips with placeholder:', () => {
       const result = InjectString.strip('a <!-- snippet --><!-- custom --> b', {
-        tag: 'custom',
+        tag: 'custom'
       });
       expect(result).to.equal('a <!-- snippet --> b');
     });
