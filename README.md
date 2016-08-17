@@ -135,7 +135,7 @@ var result = inject.append('foo');
 ```js
 var inject = new InjectString('a <!-- snippet --> b', {newlines: true});
 var result = inject.append('foo');
-//=> 'a\n<!-- snippet -->\nfoo\n<!-- endsnippet -->\nb'
+//=> 'a <!-- snippet -->\nfoo\n<!-- endsnippet --> b'
 ```
 
 ## Running tests
