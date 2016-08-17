@@ -53,8 +53,8 @@ describe('InjectString', () => {
       const result2 = inject.inject('bar');
       expect(result2).to.equal('a <!-- snippet -->foobar<!-- endsnippet --> b');
 
-      const result3 = inject.inject('qux');
-      expect(result3).to.equal('a <!-- snippet -->foobarqux<!-- endsnippet --> b');
+      const result3 = inject.inject('baz');
+      expect(result3).to.equal('a <!-- snippet -->foobarbaz<!-- endsnippet --> b');
     });
 
     it('should inject snippets into a string with different placeholders:', () => {
@@ -152,17 +152,44 @@ describe('InjectString', () => {
       const result2 = inject.inject('bar');
       expect(result2).to.equal('a <!-- snippet -->\nfoo\nbar\n<!-- endsnippet --> b');
 
-      const result3 = inject.inject('qux');
-      expect(result3).to.equal('a <!-- snippet -->\nfoo\nbar\nqux\n<!-- endsnippet --> b');
+      const result3 = inject.inject('baz');
+      expect(result3).to.equal('a <!-- snippet -->\nfoo\nbar\nbaz\n<!-- endsnippet --> b');
 
-      const result4 = inject.prepend('before');
-      expect(result4).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nqux\n<!-- endsnippet --> b');
+      const result4 = inject.inject('qux');
+      expect(result4).to.equal('a <!-- snippet -->\nfoo\nbar\nbaz\nqux\n<!-- endsnippet --> b');
 
-      const result5 = inject.append('after');
-      expect(result5).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nqux\nafter\n<!-- endsnippet --> b');
+      const result5 = inject.prepend('before');
+      expect(result5).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nbaz\nqux\n<!-- endsnippet --> b');
 
-      const result6 = inject.replace('hello');
-      expect(result6).to.equal('a <!-- snippet -->\nhello\n<!-- endsnippet --> b');
+      const result6 = inject.append('after');
+      expect(result6).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nbaz\nqux\nafter\n<!-- endsnippet --> b');
+
+      const result7 = inject.replace('hello');
+      expect(result7).to.equal('a <!-- snippet -->\nhello\n<!-- endsnippet --> b');
+    });
+
+    it('should add normalized newlines around snippets with complex snippets:', () => {
+      const inject = new InjectString('a <!-- snippet --> b', {newlines: true});
+      const result = inject.inject('\nfoo\n');
+      expect(result).to.equal('a <!-- snippet -->\nfoo\n<!-- endsnippet --> b');
+
+      const result2 = inject.inject('\nbar');
+      expect(result2).to.equal('a <!-- snippet -->\nfoo\nbar\n<!-- endsnippet --> b');
+
+      const result3 = inject.inject('baz\n');
+      expect(result3).to.equal('a <!-- snippet -->\nfoo\nbar\nbaz\n<!-- endsnippet --> b');
+
+      const result4 = inject.inject('\nqux\n');
+      expect(result4).to.equal('a <!-- snippet -->\nfoo\nbar\nbaz\nqux\n<!-- endsnippet --> b');
+
+      const result5 = inject.prepend('\nbefore\n');
+      expect(result5).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nbaz\nqux\n<!-- endsnippet --> b');
+
+      const result6 = inject.append('\nafter\n');
+      expect(result6).to.equal('a <!-- snippet -->\nbefore\nfoo\nbar\nbaz\nqux\nafter\n<!-- endsnippet --> b');
+
+      const result7 = inject.replace('\nhello\n');
+      expect(result7).to.equal('a <!-- snippet -->\nhello\n<!-- endsnippet --> b');
     });
 
     it('should keep spaces:', () => {

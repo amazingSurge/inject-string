@@ -94,7 +94,7 @@ var inject = new InjectString('before <!-- snippet --> after');
 inject.append('foo', {
   stripTags: false
 });
-//=> 'before <!-- snippet -->\nfoo\n<!-- endsnippet --> after'
+//=> 'before <!-- snippet -->foo<!-- endsnippet --> after'
 ```
 
 ### Strip placeholders
@@ -130,7 +130,7 @@ var result = inject.append('foo');
 //=> 'a {{! snippet }}foo{{! endsnippet }} b'
 ```
 
-### Add newlines
+### Add newlines around snippet
 
 ```js
 var inject = new InjectString('a <!-- snippet --> b', {newlines: true});
