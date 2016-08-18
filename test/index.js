@@ -192,6 +192,19 @@ describe('InjectString', () => {
       expect(result7).to.equal('a <!-- snippet -->\nhello\n<!-- endsnippet --> b');
     });
 
+    it('should add normalized newlines around snippets with specify lines:', () => {
+      const inject = new InjectString('a <!-- snippet --> b');
+      const result = inject.inject('foo', 'snippet', {newlines: 1});
+
+      expect(result).to.equal('a <!-- snippet -->\nfoo\n<!-- endsnippet --> b');
+
+      const result2 = inject.inject('bar', 'snippet', {newlines: 2});
+      expect(result2).to.equal('a <!-- snippet -->\nfoo\n\nbar\n\n<!-- endsnippet --> b');
+
+      const result3 = inject.inject('baz', 'snippet', {newlines: 3});
+      expect(result3).to.equal('a <!-- snippet -->\nfoo\n\nbar\n\n\nbaz\n\n\n<!-- endsnippet --> b');
+    });
+
     it('should keep spaces:', () => {
       const inject = new InjectString('first\n\n<!-- a -->\nsecond\n<!-- enda -->\n\n<!-- b -->\nthird\n<!-- endb -->\n\nfourth');
       const result = inject.inject('hello', 'a', {newlines: true});
