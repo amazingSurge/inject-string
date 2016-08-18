@@ -203,6 +203,18 @@ describe('InjectString', () => {
 
       const result3 = inject.inject('baz', 'snippet', {newlines: 3});
       expect(result3).to.equal('a <!-- snippet -->\nfoo\n\nbar\n\n\nbaz\n\n\n<!-- endsnippet --> b');
+
+      const result4 = inject.inject('qux', 'snippet', {newlines: '1,2'});
+      expect(result4).to.equal('a <!-- snippet -->\nfoo\n\nbar\n\n\nbaz\nqux\n\n<!-- endsnippet --> b');
+
+      const result5 = inject.prepend('before', 'snippet', {newlines: '2,2'});
+      expect(result5).to.equal('a <!-- snippet -->\n\nbefore\n\nfoo\n\nbar\n\n\nbaz\nqux\n\n<!-- endsnippet --> b');
+
+      const result6 = inject.append('after', 'snippet', {newlines: '3,0'});
+      expect(result6).to.equal('a <!-- snippet -->\n\nbefore\n\nfoo\n\nbar\n\n\nbaz\nqux\n\n\nafter<!-- endsnippet --> b');
+
+      const result7 = inject.replace('hello', 'snippet', {newlines: '2,3'});
+      expect(result7).to.equal('a <!-- snippet -->\n\nhello\n\n\n<!-- endsnippet --> b');
     });
 
     it('should keep spaces:', () => {
