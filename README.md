@@ -138,6 +138,20 @@ var result = inject.append('foo');
 //=> 'a <!-- snippet -->\nfoo\n<!-- endsnippet --> b'
 ```
 
+**Specify lines**
+```js
+var inject = new InjectString('a <!-- snippet --> b', {newlines: 2});
+var result = inject.append('foo');
+//=> 'a <!-- snippet -->\n\nfoo\n\n<!-- endsnippet --> b'
+```
+
+**Specify lines for before and after separately**
+```js
+var inject = new InjectString('a <!-- snippet --> b', {newlines: '1,2'});
+var result = inject.append('foo');
+//=> 'a <!-- snippet -->\nfoo\n\n<!-- endsnippet --> b'
+```
+
 ## Running tests
 
 Install dev dependencies:
